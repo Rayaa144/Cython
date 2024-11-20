@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 50
+
+typedef struct node{
+	int data;
+	struct node* LeftChild;
+	struct node* RightChild;
+	}Node;
+
+Node* CreateNode(int input){
+	Node *NewNode = (Node*)malloc(sizeof(Node));
+	if(!NewNode){
+		printf("memory allocation failed \n");
+		exit(1);
+	}
+
+	NewNode->data = input;
+	NewNode->LeftChild = NULL;
+	NewNode->RightChild= NULL;
+	return NewNode;
+}
+
+Node* insert(Node* parent, int input){
+	if(parent == NULL){
+		return CreateNode(input);
+	}
+	if (input < parent->data){
+		parent->LeftChild = insert(parent->LeftChild,input);
+	} else if (input > parent->data){
+		parent->RightChild = insert(parent->RightChild,input);
+	}
+	return parent;
+}
+
+Node* deleteNode(Node* parent, int input){
+	if (parent 
+	
